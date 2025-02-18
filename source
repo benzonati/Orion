@@ -55,6 +55,7 @@ else
 	Orion.Parent = gethui() or game.CoreGui
 end
 
+--[[ Disabled temporarily
 if gethui then
 	for _, Interface in ipairs(gethui():GetChildren()) do
 		if Interface.Name == Orion.Name and Interface ~= Orion then
@@ -68,6 +69,7 @@ else
 		end
 	end
 end
+]]
 
 function OrionLib:IsRunning()
 	if gethui then
