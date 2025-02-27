@@ -1,11 +1,12 @@
 
+cloneref = cloneref or function(...) return ... end
 
-local UserInputService = game:GetService("UserInputService")
-local TweenService = game:GetService("TweenService")
-local RunService = game:GetService("RunService")
-local LocalPlayer = game:GetService("Players").LocalPlayer
+local UserInputService = cloneref(game:GetService("UserInputService"))
+local TweenService = cloneref(game:GetService("TweenService"))
+local RunService = cloneref(game:GetService("RunService"))
+local LocalPlayer = cloneref(game:GetService("Players")).LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
-local HttpService = game:GetService("HttpService")
+local HttpService = cloneref(game:GetService("HttpService"))
 
 local OrionLib = {
 	Elements = {},
@@ -35,7 +36,7 @@ local Success, Response = pcall(function()
 end)
 
 if not Success then
-	warn("\nOrion Library - Failed to load Feather Icons. Error code: " .. Response .. "\n")
+	--warn("\nOrion Library - Failed to load Feather Icons. Error code: " .. Response .. "\n")
 end	
 
 local function GetIcon(IconName)
@@ -73,7 +74,7 @@ function OrionLib:IsRunning()
 	if gethui then
 		return Orion.Parent == gethui()
 	else
-		return Orion.Parent == game:GetService("CoreGui")
+		return Orion.Parent == cloneref(game:GetService("CoreGui"))
 	end
 
 end
@@ -1709,15 +1710,7 @@ function OrionLib:MakeWindow(WindowConfig)
 		end
 		return ElementFunction   
 	end  
-	
-	OrionLib:MakeNotification({
-		Name = "UI Library Upgrade",
-		Content = "New UI Library Available at sirius.menu/discord and sirius.menu/rayfield",
-		Time = 5
-	})
-	
 
-	
 	return TabFunction
 end   
 
